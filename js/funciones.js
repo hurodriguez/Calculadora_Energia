@@ -44,6 +44,7 @@ $(document).ready(function() {
 		consumo_dia_otros += $('.s_o .cantidad').val()*$('.s_o .h_d').val()*$('.s_o .potencia').val();
 		consumo_dia_otros += $('.p_o .cantidad').val()*$('.p_o .h_d').val()*$('.p_o .potencia').val();
 		consumo_dia_otros += $('.m_o .cantidad').val()*$('.m_o .h_d').val()*$('.m_o .potencia').val();
+		consumo_dia_otros += $('.b_o .cantidad').val()*$('.b_o .h_d').val()*$('.b_o .potencia').val();
 		//Suma Total de Consumos
 		var consumo_dia_total = ((consumo_dia_sala+consumo_dia_alcobas+consumo_dia_cocina+consumo_dia_otros)/1000);
 		//Muestra Total de Consumos diarios en Kw/h
