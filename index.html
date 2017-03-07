@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de factura de Consumo de Energia</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css" media="screen">
+      thead>tr>th{
+        text-align: center;
+      }
+      tbody>tr>td{
+        text-align: center;
+        vertical-align: middle;
+      }
+      tbody>tr>td:first-child{
+        text-align: center;
+        vertical-align: middle;
+      }
+      .sala input, .Total_Sala{
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Calculadora de factura de Consumo de Energia</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-hover table-bordered table-striped">
+            <thead>
+              <tr class="info">
+                <th>Estrato</th>
+                <th>Valor Kw/h</th>
+                <th>Valor día</th>
+                <th>Valor mes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="precio precio_kw_1"></td>
+                <td class="precio precio_kw_dia_1"></td>
+                <td class="precio precio_kw_mes_1"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="precio precio_kw_2"></td>
+                <td class="precio precio_kw_dia_2"></td>
+                <td class="precio precio_kw_mes_2"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="precio precio_kw_3"></td>
+                <td class="precio precio_kw_dia_3"></td>
+                <td class="precio precio_kw_mes_3"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="precio precio_kw_4"></td>
+                <td class="precio precio_kw_dia_4"></td>
+                <td class="precio precio_kw_mes_4"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="precio precio_kw_5"></td>
+                <td class="precio precio_kw_dia_5"></td>
+                <td class="precio precio_kw_mes_5"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="precio precio_kw_6"></td>
+                <td class="precio precio_kw_dia_6"></td>
+                <td class="precio precio_kw_mes_6"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr class="success">
+                <th>Estrato</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="estrato">
+                  <select class="form-control" id="estrato">
+                    <option value="">Seleccione Estrato</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                </td>
+                <td class="valor_estrato"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Sala de estar -->
+        <div class="col-md-6">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4>Sala de estar</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr class="warning">
+                    <th>Equipo</th>
+                    <th>Cantidad</th>
+                    <th>Horas al día</th>
+                    <th>Potencia (W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tv_s">
+                    <td>Televisor</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="150">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="s_s">
+                    <td>Equipo de Sonido</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="150">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="t_s">
+                    <td>Teatro en Casa</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="1000">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="b_s">
+                    <td>Bombillos</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="65">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr class="danger">
+                    <th colspan="3">Total</th>
+                    <th class="Total_Sala"></th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--Fin sala de estar-->
+        <!-- Cuarto -->
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Alcobas</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr class="info">
+                    <th>Equipo</th>
+                    <th>Cantidad</th>
+                    <th>Horas al día</th>
+                    <th>Potencia (W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="a_a">
+                    <td>Aire Acondicionado</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="4000">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="v_a">
+                    <td>Ventilador</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="40">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="c_a">
+                    <td>Computador</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="70">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="i_a">
+                    <td>Impresora</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="30">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="b_a">
+                    <td>Bombillos</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="65">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="t_a">
+                    <td>Televisor</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="150">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr class="danger">
+                    <th colspan="3">Total</th>
+                    <th class="Total_Alcobas"></th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Cuarto -->
+      </div>
+      <!-- Seccion 2 -->
+      <div class="row">
+        <!-- Cocina -->
+        <div class="col-md-6">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4>Cocina</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr class="warning">
+                    <th>Equipo</th>
+                    <th>Cantidad</th>
+                    <th>Horas al día</th>
+                    <th>Potencia (W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="n_c">
+                    <td>Nevera</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="300">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="h_c">
+                    <td>Horno Micro-ondas</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="1800">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="l_c">
+                    <td>Licuadora</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="80">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="o_c">
+                    <td>Olla Arrocera</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="60">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="b_c">
+                    <td>Bombillos</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="65">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr class="danger">
+                    <th colspan="3">Total</th>
+                    <th class="Total_Cocina"></th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Coina -->
+        <!-- Patio y Otros -->
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Patio y Otros</h4>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr class="warning">
+                    <th>Equipo</th>
+                    <th>Cantidad</th>
+                    <th>Horas al día</th>
+                    <th>Potencia (W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="c_o">
+                    <td>Calentador</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="300">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="l_o">
+                    <td>Lavadora</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="375">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="s_o">
+                    <td>Secadora</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="270">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="p_o">
+                    <td>Plancha</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="1000">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                  <tr class="m_o">
+                    <td>Motobomba</td>
+                    <td><input type="number" class="cantidad form-control"></td>
+                    <td><input type="number" class="h_d form-control"></td>
+                    <td>
+                      <div class="input-group">
+                        <input type="number" class="potencia form-control" value="735">
+                        <div class="input-group-addon">W</div>
+                      </div>                
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr class="danger">
+                    <th colspan="3">Total</th>
+                    <th class="Total_Otros"></th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Ccoina -->
+      </div>
+      <!-- -->
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.priceformat.min.js"></script>
+    <script src="js/jquery.number.min.js"></script>
+    <script src="js/funciones.js"></script>
+  </body>
+</html>
